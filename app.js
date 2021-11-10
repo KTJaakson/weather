@@ -1,6 +1,8 @@
+document.addEventListener('DOMContentLoaded', cityWeather)
+
 function weatherDataFetch( city ) {
 	var key = '87dea71911a94f4e284d8bb0b86ff779';
-	fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},CA&appid=${key}`)
+	fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},&appid=${key}`)
 	.then(function(resp) {
 		return resp.json()
 	}) // Conver data to json
@@ -16,6 +18,7 @@ function weatherDataFetch( city ) {
 function cityWeather(e) {
 	weatherDataFetch( 'Tallinn' );
 }
+
 
 function drawWeather( data ) {
 	var celcius = Math.round(parseFloat(data.main.temp)-273.15);
